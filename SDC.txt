@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Syndication Support</title>
+    <link rel="icon" href="https://pbs.twimg.com/profile_images/1126527644902797312/spu6AXFp.png" type="image/gif" sizes="15X15">
+
+    <style>
+        body{
+             margin: 0;
+             background: lightblue;
+        }
+        header {
+              background-color: #596fa0;
+              padding: 1px;
+              text-align: center;
+              font-size: 18px;
+              color: white;
+         }
+        nav{
+             width: 100%;
+             margin-top: 1px;
+             font-size:15px;
+             font-family:Helvetica;
+        }
+        ul{
+             margin: 0 auto;
+             float:left;
+             width: 100%;
+             background:linear-gradient(#596fa0,#8b0000);
+             background:-moz-linear-gradient(#596fa0,#8b0000);
+             background:-webkit-linear-gradient(#596fa0,#8b0000);
+        }
+        ul li {
+             list-style:none;
+             margin:0;
+             padding:0;
+             float:left;
+             display: inline;
+             position:relative;
+        }
+        ul li div{
+             border-right: 1px dotted #fff;
+             padding: 13px 25px;
+             color:#fff;
+             text-declaration:none;
+             display:inline-block;
+             background:linear-gradient(#596fa0,#8b0000);
+             background:-moz-linear-gradient(#596fa0,#8b0000);
+             background:-webkit-linear-gradient(#596fa0,#8b0000);
+
+        }
+        ul li span button{
+              border-right: 1px dotted #fff;
+             padding: 13px 25px;
+             color:#fff;
+             text-declaration:none;
+             display:inline-block;
+             background:linear-gradient(#596fa0,#8b0000);
+             background:-moz-linear-gradient(#596fa0,#8b0000);
+             background:-webkit-linear-gradient(#596fa0,#8b0000);
+
+        }
+
+        ul li span button:hover{
+             background:linear-gradient(#006400,#228b22);
+             background:-moz-linear-gradient(#006400,#228b22);
+             background:-webkit-linear-gradient(#006400,#228b22) ;
+        }
+
+        ul li div:hover{
+             background:linear-gradient(#006400,#228b22);
+             background:-moz-linear-gradient(#006400,#228b22);
+             background:-webkit-linear-gradient(#006400,#228b22) ;
+        }
+        ul li a:hover{
+             background:linear-gradient(#006400,#228b22);
+             background:-moz-linear-gradient(#006400,#228b22);
+             background:-webkit-linear-gradient(#006400,#228b22) ;
+        }
+        ul li:hover> ul{
+            visibility:visible;
+        }
+        ul ul {
+            list-style:none;
+            margin:0;
+            padding:0;
+            visibility:hidden;
+            position:absolute;
+            width: 180px;
+            border-top:1px solid #fff;
+
+        }
+        ul ul li a{
+            padding:9px 15px;
+            color: #fff;
+            text-decoration:none;
+            display:inline-block;
+            float:left;
+            width:150px;
+            border-bottom:1px dotted #fff;
+        }
+        ul ul li ul {
+            top: 0;
+            left: 181px;
+        }
+
+        .footer {
+           bottom: 0;
+           width: 100%;
+           background-color: #596fa0;
+           color: white;
+           text-align: center;
+           font-size:15px;
+           font-family:Helvetica;
+           padding: 5px;
+        }
+        .row {
+            display: flex;
+        }
+        .column {
+             flex: 33.33%;
+             padding: 5px;
+        }
+
+
+       ul li button{
+             border-right: 1px dotted #fff;
+             padding: 13px 25px;
+             color:#fff;
+             text-declaration:none;
+             font-size:15px;
+             font-family:Helvetica;
+             display:inline-block;
+             background:linear-gradient(#596fa0,#8b0000);
+             background:-moz-linear-gradient(#596fa0,#8b0000);
+             background:-webkit-linear-gradient(#596fa0,#8b0000);
+
+        }
+
+        ul li input{
+             border-right: 1px dotted #fff;
+             display:inline-block;
+             height: 45px;
+
+        }
+        .partners{
+             border-right: 2px #000 ;
+             display:inline-block;
+             height: 45px;
+             width: 6%;
+
+        }
+
+        ul li button:hover{
+             background:linear-gradient(#006400,#228b22);
+             background:-moz-linear-gradient(#006400,#228b22);
+             background:-webkit-linear-gradient(#006400,#228b22) ;
+        }
+
+        nav span {
+             margin: 0 auto;
+             float:right;
+             background:linear-gradient(#596fa0,#8b0000);
+             background:-moz-linear-gradient(#596fa0,#8b0000);
+             background:-webkit-linear-gradient(#596fa0,#8b0000);
+        }
+
+         nav span button{
+             border-right: 1px dotted #fff;
+             padding: 5px 15px;
+             color:#fff;
+             text-declaration:none;
+             display:inline-block;
+             background:linear-gradient(#596fa0,#8b0000);
+             background:-moz-linear-gradient(#596fa0,#8b0000);
+             background:-webkit-linear-gradient(#596fa0,#8b0000);
+
+        }
+        nav span button:hover{
+             background:linear-gradient(#006400,#228b22);
+             background:-moz-linear-gradient(#006400,#228b22);
+             background:-webkit-linear-gradient(#006400,#228b22) ;
+        }
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+            border: 3px solid black;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+            border: 1px solid black;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+
+        .contactStyle {
+          display: none;
+        }
+        .workflowStyle {
+          display: none;
+        }
+
+        h3{
+          padding: 5px;
+          background-color: #afa675;
+          width: 25%;
+          align: left
+          margin: 20px;
+          color: white;
+
+        }
+        .contactHeaders{
+          background-color: #afa675;
+          text-align: center;
+          font-size: 18px;
+        }
+
+    </style>
+</head>
+<header>
+<h2>Platform RE-Syndication Support</h2>
+</header>
+
+<nav>
+    <ul>
+        <li><button onClick="openCity(event, 'home')"> <i class="fa fa-home "></i> SDC Home</button></li>
+        <li><button onclick="openCity(event, 'contacts')" >Contacts</button></li>
+        <li><div >Rogers</div>
+            <ul>
+                <li><a href ="">Inventory</a>
+                    <ul>
+                        <li><a href ="http://dcentops.comcast.net/inv/sdc/sdc_roger_nk/" target="_blank">New Kirk</a></li>
+                        <li><a href ="http://dcentops.comcast.net/inv/sdc/sdc_roger_wd/" target="_blank">WolfDale</a></li>
+                    </ul>
+                </li>
+                <li><a href ="">Sop's</a>
+                    <ul>
+                        <li><a href ="">New Kirk</a></li>
+                        <li><a href ="">WolfDale</a></li>
+                    </ul>
+                </li>
+                <li><a href ="">Reports</a>
+                    <ul>
+                        <li><a href ="https://sevone.g.comcast.net/#login/reportId=7873&edit=0&page=wizard" target="_blank">New Kirk</a></li>
+                        <li><a href ="https://sevone.g.comcast.net/#login/reportId=7872&edit=0&page=wizard" target="_blank">WolfDale</a></li>
+                    </ul>
+                </li>
+                <li><a href ="">Monitoring Dashboards</a>
+                    <ul>
+                        <li><a href ="https://splunksyslog.io.comcast.net/en-US/app/search/rogers_sdc_proactive_support?form.time.earliest=-24h%40h&form.time.latest=now&earliest=0&latest=" target="_blank">New Kirk</a></li>
+                        <li><a href ="https://splunksyslog.io.comcast.net/en-US/app/search/rogers_sdc_proactive_support?form.time.earliest=-24h%40h&form.time.latest=now&earliest=0&latest=" target="_blank">WolfDale</a></li>
+                    </ul>
+                <li><a href ="">RMA locations</a>
+                    <ul>
+                        <li><a href ="https://itrc.comcast.net/devices?regex=newkirk" target="_blank">New Kirk</a></li>
+                        <li><a href ="https://itrc.comcast.net/devices?regex=wolfedale" target="_blank">WolfDale</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li><div >Shaw</div>
+            <ul>
+                <li><a href ="">Inventory</a>
+                    <ul>
+                        <li><a href ="https://dce-dashboard.cable.comcast.com/inventory/site/sdc-shawcalgary/" target="_blank">Calgary</a></li>
+                        <li><a href ="https://dce-dashboard.cable.comcast.com/inventory/site/sdc-shawbarlow/" target="_blank">Barlow</a></li>
+                    </ul>
+                </li>
+                <li><a href ="">Sop's</a>
+                    <ul>
+                        <li><a href ="">Calgary</a></li>
+                        <li><a href ="">Barlow</a></li>
+                    </ul>
+                </li>
+                <li><a href ="">Reports</a>
+                    <ul>
+                        <li><a href ="https://sevone.g.comcast.net/#login/reportId=8398&edit=0&page=wizard" target="_blank">Calgary</a></li>
+                        <li><a href ="https://sevone.g.comcast.net/#login/reportId=8397&edit=0&page=wizard" target="_blank">Barlow</a></li>
+                    </ul>
+                </li>
+                <li><a href ="">Monitoring Dashboards</a>
+                    <ul>
+                        <li><a href ="https://splunksyslog.io.comcast.net/en-US/app/search/shaw_sdc_proactive_support?form.time.earliest=-15m&form.time.latest=now&earliest=0&latest=" target="_blank">Calgary</a></li>
+                        <li><a href ="https://splunksyslog.io.comcast.net/en-US/app/search/shaw_sdc_proactive_support?form.time.earliest=-15m&form.time.latest=now&earliest=0&latest=" target="_blank">Barlow</a></li>
+                    </ul>
+                </li>
+                                <li><a href ="">RMA locations</a>
+                    <ul>
+                        <li><a href ="https://itrc.comcast.net/devices?regex=calgary" target="_blank">Calgary</a></li>
+                        <li><a href ="https://itrc.comcast.net/devices?regex=barlow" target="_blank">Barlow</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li><div >Videotron</div>
+            <ul>
+                <li><a href ="">Inventory</a>
+                    <ul>
+                        <li><a href ="https://dce-dashboard.cable.comcast.com/inventory/site/sdc-videotronhahd/" target="_blank">HAHD</a></li>
+                        <li><a href ="https://dce-dashboard.cable.comcast.com/inventory/site/sdc-videotronmdhd/" target="_blank">MDHD</a></li>
+                    </ul>
+                </li>
+                <li><a href ="">Sop's</a>
+                    <ul>
+                        <li><a href ="">HAHD</a></li>
+                        <li><a href ="">MDHD</a></li>
+                    </ul>
+                </li>
+                <li><a href ="">Reports</a>
+                    <ul>
+                        <li><a href ="">HAHD</a></li>
+                        <li><a href ="">MDHD</a></li>
+                    </ul>
+                </li>
+                <li><a href ="">Monitoring Dashboards</a>
+                    <ul>
+                        <li><a href ="https://splunksyslog.io.comcast.net/en-US/app/search/vidoetron_sdc_proactive_support?form.time.earliest=-24h%40h&form.time.latest=now&earliest=0&latest=" target="_blank">HAHD</a></li>
+                        <li><a href ="https://splunksyslog.io.comcast.net/en-US/app/search/vidoetron_sdc_proactive_support?form.time.earliest=-24h%40h&form.time.latest=now&earliest=0&latest=" target="_blank">MDHD</a></li>
+                    </ul>
+                </li>
+                                <li><a href ="">RMA locations</a>
+                    <ul>
+                        <li><a href ="https://itrc.comcast.net/devices?regex=boulindustri" target="_blank">hahd</a></li>
+                        <li><a href ="https://itrc.comcast.net/devices?regex=ruehenryford" target="_blank">mdhd</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li><div >Cox</div>
+                <ul>
+                    <li><a href ="">Inventory</a>
+                        <ul>
+                            <li><a href ="https://dce-dashboard.cable.comcast.com/inventory/site/sdc-coxdeervalley/" target="_blank">Deer Valley</a></li>
+                            <li><a href ="https://dce-dashboard.cable.comcast.com/inventory/site/sdc-coxdukedrive/" target="_blank">Duke Drive</a></li>
+                        </ul>
+                    </li>
+                    <li><a href ="">Sop's</a>
+                        <ul>
+                            <li><a href ="">Deer Valley</a></li>
+                            <li><a href ="">Duke Drive</a></li>
+                        </ul>
+                    </li>
+                    <li><a href ="">Reports</a>
+                        <ul>
+                            <li><a href ="">Deer Valley</a></li>
+                            <li><a href ="">Duke Drive</a></li>
+                        </ul>
+                    </li>
+                    <li><a href ="">Monitoring Dashboards</a>
+                        <ul>
+                            <li><a href ="">Deer Valley and Duke Drive</a></li>
+                        </ul>
+                    </li>
+                            <li><a href ="">RMA locations</a>
+                    <ul>
+                        <li><a href ="">Deer Valley</a></li>
+                        <li><a href ="">Duke Drive</a></li>
+                    </ul>
+                </li>
+                </ul>
+        </li>
+        <li>
+    <span>
+        <button onclick="openCity(event, 'workflow')" >Remote hands</button>
+    </span>
+        </li>
+<li><div >Network Diagrams</div>
+                <ul>
+                    <li><a href ="https://wiki.sys.comcast.net/pages/viewpage.action?pageId=104225658&preview=/104225658/157560159/Network%20Diagram%20ver5.0.pdf" target="_blank">Rogers</a>
+
+                    </li>
+                    <li><a href ="https://etwiki.sys.comcast.net/pages/viewpage.action?spaceKey=ccpps&title=Shaw+Cable&preview=/544265533/564445871/Shaw%20Network%20Diagram%20ver1.7.pdf" target="_blank">Shaw</a>
+
+                    </li>
+                    <li><a href ="https://wiki.sys.comcast.net/display/DCO/RE-DC-ENT+-+Videotron+%28SDC%29+-+Monitoring+and+Support?preview=/210493092/210497016/vediotron.pdf">Videotron</a>
+
+                    </li>
+                    <li><a href ="">Cox</a>
+
+                    </li>
+                </ul>
+
+
+          </li>
+<li><div >Transport Diagrams</div>
+                <ul>
+                    <li><a href ="https://wiki.sys.comcast.net/pages/viewpage.action?spaceKey=DCO&title=RE-DC-ENT+-+Rogers+%28SDC%29+-+Monitoring+and+Support&preview=/108694897/208454161/Rogers.jpg" target="_blank">Rogers</a>
+
+                    </li>
+                    <li><a href ="">Shaw</a>
+
+                    </li>
+                    <li><a href ="">Videotron</a>
+
+                    </li>
+                    <li><a href ="">Cox</a>
+
+                    </li>
+                </ul>
+
+<li><div>Maintenance Calendars</div>
+                <ul>
+                    <li><a href ="https://comcast.service-now.com/$pa_dashboard.do?sysparm_dashboard=94d79f861bc7af008998620f6e4bcb2e&sysparm_tab=6e48d7ca1bc7af008998620f6e4bcbc9&sysparm_cancelable=true&sysparm_editable=false&sysparm_act
+ive_panel=false" target="_blank">Rogers</a>
+
+                    </li>
+                    <li><a href ="https://comcast.service-now.com/$pa_dashboard.do?sysparm_dashboard=94d79f861bc7af008998620f6e4bcb2e&sysparm_tab=196917ce1bc7af008998620f6e4bcb3d&sysparm_cancelable=true&sysparm_editable=false&sysparm_act
+ive_panel=false" target="_blank">Shaw</a>
+
+                    </li>
+                    <li><a href ="https://comcast.service-now.com/$pa_dashboard.do?sysparm_dashboard=94d79f861bc7af008998620f6e4bcb2e&sysparm_tab=e5691b8e1bc7af008998620f6e4bcb5d&sysparm_cancelable=true&sysparm_editable=false&sysparm_act
+ive_panel=false" target="_blank">Videotron</a>
+
+                    </li>
+                    <li><a href ="https://comcast.service-now.com/$pa_dashboard.do?sysparm_dashboard=94d79f861bc7af008998620f6e4bcb2e&sysparm_tab=b5285f0a1bc7af008998620f6e4bcb7f&sysparm_cancelable=true&sysparm_editable=false&sysparm_act
+ive_panel=false" target="_blank">Cox</a>
+
+                    </li>
+                </ul>
+
+
+</nav>
+<div id="home" class="homeStyle">
+
+<h4>
+   Comcast Syndicated Data Centers (SDC) are designed and deployed to provide re-branded Comcast networks, products and services to other providers.
+   Comcast services such as X1, voice remote, and CDVR are some of the products we provide our SDC partners.
+   RE-DC-ENT monitors, and supports the network 24/7 for our SDC partners.</h4>
+
+    <input class="partners" type="image" src="http://dcentops.comcast.net/images/allimages/rogers.png"/>
+        <p style="margin-left:2.5em">The largest cable television provider in Canada, Rogers is based in the Toronto Canada with a customer base of over 2.25 million TV, and 930,000 internet subscribers, with additional services in telep
+hony, wireless, and various media.
+        </p>
+
+    <input class="partners" type="image" src="http://dcentops.comcast.net/images/allimages/cox.png"/>
+       <p style="margin-left:2.5em">
+        Headquartered in Atlanta Georgia, Cox is the third largest cable television provider in the United States, serving more than 6.2 million customers.
+        Known as Contour 2, their implementation of the Comcast X1 video platform has an install base of over 1 million customers.
+       </p>
+    <input class="partners" type="image" src="http://dcentops.comcast.net/images/allimages/shaw.png"/>
+       <p style="margin-left:2.5em"> Is based out of the Calgary, the largest city Alberta Canada. Shaw serves over 3.2 million customers.
+        Shaw has rebranded the Comcast X1 platform mobile TV, as FreeRange TV and the STB service as BlueSky TV.
+       </p>
+    <input class="partners"  type="image" src="http://dcentops.comcast.net/images/allimages/videotron.png"/><p style="margin-left:2.5em">
+        Headquartered in Montreal, Videotron serves over 1.7 Million cable TV, 1.3 million voice, and 1.5 million customers on its internet services.
+        They have also been ranked Quebec’s most respected telecommunications company since 2005.
+    </p>
+	<input class="partners"  type="image" src=""/><p style="margin-left:2.5em">
+        
+    </p>
+</div>
+
+<div id="workflow" class="workflowStyle">
+    <h3 id="myHeader">SDC  Remote hands engagement process. </h3>
+    <p style="margin-left:2.5em">Remote hands support at SDC location should be engaged by T&P Production support. Please send an email to them requesting to open a service now ticket.</p>
+    <p style="margin-left:2.5em">Email : TP_Production_Support@cable.comcast.com</p>
+    <p style="margin-left:2.5em">Phone : 1-800-896-5893</p>
+
+    <h3 style="font-size:40 px;">Step 1:</h3>
+    <p style="margin-left:2.5em">Comcast T&P production support identifies faulty equipment.</p>
+    <p style="margin-left:2.5em"> Comcast T&P production support opens a IOP ticket and through the bonding process, this will open a ticket on the SDC  Remedy..</p>
+    <h3 style="font-size:30 px;">Ticket must include the following</h3>
+    <p style="margin-left:2.5em">The word RMA at the beginning of the title in the ticket.</p>
+    <p style="margin-left:2.5em">Location of RMA. ( Site, Rack, and RU).</p>
+    <p style="margin-left:2.5em">Date of Failure observed.</p>
+    <p style="margin-left:2.5em">Serial number of RMA.</p>
+    <p style="margin-left:2.5em">Date of Failure observed.</p>
+    <p style="margin-left:2.5em">Serial number of RMA.</p>
+    <p style="margin-left:2.5em">Name of RMA server and model.</p>
+    <p style="margin-left:2.5em">Shipping address of RMA.</p>
+    <p style="margin-left:2.5em">Contact person at Comcast for RMA with phone number and email.</p>
+    <h3 style="font-size:40 px;">Step 2:</h3>
+    <p style="margin-left:2.5em">SDC  Video NOC receives RMA ticket via Remedy.</p>
+    <p style="margin-left:2.5em">SDC  Video NOC Specialist will dispatch ticket to tech and update the ticket with tech name, contact information and shipping address.</p>
+    <p style="margin-left:2.5em">SDC  open trouble troubleshooting calls if necessary between tech and Comcast.</p>
+    <p style="margin-left:2.5em">Tech confirms the serial number of equipment fault and adds it to the ticket.</p>
+    <h3 style="font-size:40 px;">Step 3:</h3>
+    <p style="margin-left:2.5em">Comcast Data Center RE processes RMA.</p>
+    <p style="margin-left:2.5em">RMA Equipment must be labeled NO COST WARRANTY REPLACEMENT to prevent Taxes.</p>
+    <p style="margin-left:2.5em">Comcast must also provide the brokerage information for return.</p>
+    <p style="margin-left:2.5em">Comcast update ticket with tracking information, Cost of equipment and return shipping address of RMA and the labels/number from courier/shipping Company.</p>
+    <h3 style="font-size:40 px;">Step 4:</h3>
+    <p style="margin-left:2.5em">SDC ’s tech receives replacement equipment at the headend and contacts Video NOC to work with Comcast on RMA swap.</p>
+    <p style="margin-left:2.5em">SDC  tech boxes RMA and Labels Equipment as FAULTY WARRANTY RETURN with the RMA number and Comcast brokerage information</p>
+    <p style="margin-left:2.5em">SDC  Tech update ticket with tracking number.</p>
+    <h3 style="font-size:40 px;">Step 5:</h3>
+    <p style="margin-left:2.5em">Comcast Data Center RE confirms faulty equipment is received and closes the ticket.</p>
+
+</div>
+
+<div id="contacts" class="contactStyle">
+    <div class="contactHeaders" align="center">RE-DC-ENT Operations</div>
+    <table>
+        <tr>
+            <th>NAME</th>
+            <th>ROLE</th>
+            <th>PROJECT INVOLVED</th>
+            <th>EMAIL/PHONE</th>
+        </tr>
+         <tr>
+            <td>Steve Prendergast</td>
+            <td>Executive Director</td>
+            <td>SDC Network</td>
+            <td>(610) 732-2435(m),Steve_Prendergast@cable.comcast.com</td>
+        </tr>
+
+        <tr>
+            <td>Kristi DeTienne</td>
+            <td>Senior Manager</td>
+            <td>SDC Network</td>
+            <td>(303) 372-1425 (m),Kristi_DeTienne@comcast.com</td>
+        </tr>
+
+         <tr>
+            <td>Ryan Dixon</td>
+            <td>Manager</td>
+            <td>SDC Network</td>
+            <td>(610) 732-1742 (m),Ryan_Dixon3@cable.comcast.com</td>
+        </tr>
+
+        <tr>
+            <td>Durel Thomasluv</td>
+            <td>Engineer IV</td>
+            <td>SDC Lead</td>
+            <td>(303) 372-1455 (m),Durel_Thomasluv@cable.comcast.com</td>
+        </tr>
+        <tr>
+            <td>Punitha Devi</td>
+            <td>SME-Syndication Network</td>
+            <td>Proactive Monitoring and Support</td>
+            <td>Punitha_Devi@comcast.com</td>
+        </tr>
+        <tr>
+            <td>Akhil Uddagiri</td>
+            <td>SME-Syndication network</td>
+            <td>Proactive Monitoring and Support</td>
+            <td>Akhil_Uddagiri@comcast.com</td>
+        </tr>
+
+        </tr>
+    </table>
+    <div class="contactHeaders" align="center">NVIE ENGINEERING CONTACTS(</div>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>ROLE</th>
+            <th>PROJECT INVOLVED</th>
+            <th>Email/Phone</th>
+        </tr>
+         <tr>
+            <td>Nhia Yang</td>
+            <td>VIE, Deployment eng</td>
+            <td>Deployment HIF, initial build</td>
+            <td>303-267-5299,Nhia_Yang2@comcast.com</td>
+        </tr>
+        <tr>
+            <td>Alerto Bermudez</td>
+            <td>VIE, Deployment eng</td>
+            <td>Deployment HIF, initial build</td>
+            <td>301-237-7627 , alberto_bermudez@comcast.com</td>
+        </tr>
+        <tr>
+            <td>Tim Vuong</td>
+            <td>NVIE, Manager</td>
+            <td>SDC Network</td>
+            <td>(610) 732-2830 (m), tim_vuong@comcast.com</td>
+        </tr>
+        <tr>
+            <td>Dustin Wang</td>
+            <td>VIE, Deployment eng</td>
+            <td>Deployment HIF, initial build</td>
+            <td>609-352-2741 , dustin_wang@comcast.com</td>
+        </tr>
+        <tr>
+            <td>Ed Green</td>
+            <td>VIE, Lead Deployment eng</td>
+            <td>Deployment HIF, initial build</td>
+            <td>609.685.3868(m) ed_green@comcast.com</td>
+        </tr>
+        <tr>
+            <td>Jamie Mastromarino</td>
+            <td>NVIE, PM</td>
+            <td>Deployment SDC Network</td>
+            <td>856.792.2773(o) jamie_mastromarino@comcast.com</td>
+        </tr>
+        <tr>
+            <td>Mitchell Crowther</td>
+            <td>Network Architect</td>
+            <td>Syndication, cDVR, RIO,</td>
+            <td>720-376-0541 mitchell_crowther@comcast.com</td>
+        </tr>
+        <tr>
+            <td>Yasser Tayee</td>
+            <td>NVIE, Net Eng</td>
+            <td>SDC Network</td>
+            <td>610-301-1509(m) Yasser_Tayee@comcast.com</td>
+        </tr>
+    </table>
+
+<table>
+        <tr>
+            <th><h2>ARISTA TAC</h2>
+                <p><a href="https://www.arista.com/en/login">TAC PAGE</a></p>
+                <p>Arista USA customer support</p>
+                <p>Phone : +1-408-547-5502</p>
+                <p>Toll free : +1-866-476-0000</p>
+            </th>
+            <th><h2>JUNIPER TAC</h2>
+                <p><a href="https://iam-sso.juniper.net/iamsso/xlogin.jsp?bmctx=EAD61BB3DBCABD64C2A4A2AEA570E281A2AC4DFBB2A56B46EC0E51905266BBE6&password=secure_string&contextType=external&username=string&challenge_url=%2Fiamsso%2Fxlog$"
+>TAC PAGE</a></p>
+                <p>Juniper USA customer support</p>
+                <p>Phone : +1-888-314-JTAC</p>
+            </th>
+        </tr>
+    </table>
+
+
+</div>
+
+<br/>
+<div class="footer">
+    <p>Copy Rights Comcast!</p>
+</div>
+
+<script>
+function openCity(evt, tabName) {
+  document.getElementById(tabName).style.display = "block";
+  if(tabName !== "contacts"){
+  document.getElementById("contacts").style.display = "none";
+  }
+  if(tabName !== "home"){
+  document.getElementById("home").style.display = "none";
+  }
+  if(tabName !== "workflow"){
+  document.getElementById("workflow").style.display = "none";
+  }
+}
+</script>
+
+</body>
+</html>
